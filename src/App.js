@@ -132,7 +132,7 @@ function App() {
 
   async function handleAdd() {
     if (!title.trim()) return;
-    await axios.post("http://localhost:8080/api/todos", {
+    await axios.post("https://todolistbackend-dbxm.onrender.com/api/todos", {
       title: title,
       completed: false,
     });
@@ -142,7 +142,7 @@ function App() {
 
   async function handleEdit(item,value){
     console.log(typeof(value)=="boolean");
-    await axios.put(`http://localhost:8080/api/todos/${item.id}`, {
+    await axios.put(`https://todolistbackend-dbxm.onrender.com/api/todos/${item.id}`, {
       
       
       title:typeof(value)=="boolean"?item.title:value ,
@@ -163,7 +163,7 @@ setIsEditable((prev)=>({...prev,[id]:!prev[id]}))
   }
 
   async function handleDelete(id) {
-    await axios.delete(`http://localhost:8080/api/todos/${id}`);
+    await axios.delete(`https://todolistbackend-dbxm.onrender.com/api/todos/${id}`);
     getTasks();
   }
   const handleEnter=(e,item)=>{
@@ -175,7 +175,7 @@ setIsEditable((prev)=>({...prev,[id]:!prev[id]}))
   }
   async function getTasks() {
     try {
-      const response = await axios.get("http://localhost:8080/api/todos");
+      const response = await axios.get("https://todolistbackend-dbxm.onrender.com/api/todos");
       setItems(response.data);
     } catch (e) {
       console.log("something went wrong or loading");
